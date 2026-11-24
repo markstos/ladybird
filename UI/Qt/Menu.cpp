@@ -237,13 +237,13 @@ static void set_action_shortcuts(QAction& qaction, ActionID id)
         qaction.setShortcuts(QKeySequence::keyBindings(QKeySequence::StandardKey::Redo));
         break;
     case ActionID::CopySelection:
-        qaction.setShortcut(QKeySequence::StandardKey::Copy);
+        qaction.setShortcuts({ QKeySequence(QKeySequence::StandardKey::Copy), QKeySequence(Qt::Key_Copy) });
         break;
     case ActionID::CutSelection:
-        qaction.setShortcut(QKeySequence::StandardKey::Cut);
+        qaction.setShortcuts({ QKeySequence(QKeySequence::StandardKey::Cut), QKeySequence(Qt::Key_Cut) });
         break;
     case ActionID::Paste:
-        qaction.setShortcut(QKeySequence::StandardKey::Paste);
+        qaction.setShortcuts({ QKeySequence(QKeySequence::StandardKey::Paste), QKeySequence(Qt::Key_Paste) });
         break;
     case ActionID::PasteAndMatchStyle:
 #if defined(AK_OS_MACOS)

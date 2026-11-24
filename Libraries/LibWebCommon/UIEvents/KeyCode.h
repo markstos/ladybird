@@ -150,7 +150,10 @@ namespace Web::UIEvents {
     __ENUMERATE_KEY_CODE(Calculator, "Calculator", 0xA8)             \
     __ENUMERATE_KEY_CODE(Apps, "Apps", 0xA9)                         \
     __ENUMERATE_KEY_CODE(PlayPause, "PlayPause", 0xAA)               \
-    __ENUMERATE_KEY_CODE(Menu, "Menu", 0xAB)
+    __ENUMERATE_KEY_CODE(Menu, "Menu", 0xAB)                         \
+    __ENUMERATE_KEY_CODE(Copy, "Copy", 0xAD)                         \
+    __ENUMERATE_KEY_CODE(Cut, "Cut", 0xAE)                           \
+    __ENUMERATE_KEY_CODE(Paste, "Paste", 0xAF)
 
 enum KeyCode : u8 {
 #define __ENUMERATE_KEY_CODE(name, ui_name, code) Key_##name = code,

@@ -217,6 +217,12 @@ static ErrorOr<Optional<Utf16FlyString>> get_event_named_key(KeyCode platform_ke
         return "Delete"_utf16_fly_string;
     case KeyCode::Key_Insert:
         return "Insert"_utf16_fly_string;
+    case KeyCode::Key_Copy:
+        return "Copy"_utf16_fly_string;
+    case KeyCode::Key_Cut:
+        return "Cut"_utf16_fly_string;
+    case KeyCode::Key_Paste:
+        return "Paste"_utf16_fly_string;
 
     // 3.6. UI Keys, https://www.w3.org/TR/uievents-key/#keys-ui
     case KeyCode::Key_Menu:
@@ -667,6 +673,12 @@ static ErrorOr<Utf16FlyString> get_event_code(KeyCode platform_key, unsigned mod
         return "LaunchApp1"_utf16_fly_string;
 
     // 3.7. Legacy, Non-Standard and Special Keys, https://www.w3.org/TR/uievents-code/#key-legacy
+    case KeyCode::Key_Copy:
+        return "Copy"_utf16_fly_string;
+    case KeyCode::Key_Cut:
+        return "Cut"_utf16_fly_string;
+    case KeyCode::Key_Paste:
+        return "Paste"_utf16_fly_string;
     case KeyCode::Key_Invalid:
         return "Unidentified"_utf16_fly_string;
     }

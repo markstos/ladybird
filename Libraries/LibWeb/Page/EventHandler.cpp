@@ -2181,6 +2181,15 @@ EventResult EventHandler::handle_keydown(UIEvents::KeyCode key, u32 modifiers, u
             return Editing::perform_history_action(*document, Editing::HistoryAction::Redo);
 #endif
     }
+    // Some keyboards have dedicated Copy, Cut and Paste keys
+    if ((modifiers & (UIEvents::Mod_Ctrl | UIEvents::Mod_Alt | UIEvents::Mod_Shift | UIEvents::Mod_Super)) == 0) {
+        if (key == UIEvents::KeyCode::Key_Copy)
+            return perform_copy_action();
+        if (key == UIEvents::KeyCode::Key_Cut)
+            return perform_cut_action();
+        if (key == UIEvents::KeyCode::Key_Paste)
+            return perform_paste_action(Clipboard::PasteMode::AllMimeTypes);
+    }
     if ((modifiers & UIEvents::Mod_PlatformCtrl) != 0 && (modifiers & UIEvents::Mod_Shift) != 0 && key == UIEvents::KeyCode::Key_V) {
 #if defined(AK_OS_MACOS)
         // INTEROP: On macOS the system-wide Paste and Match Style shortcut also holds Option. Gecko accepts it with and

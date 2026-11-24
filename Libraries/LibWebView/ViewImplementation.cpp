@@ -1283,8 +1283,14 @@ static bool is_activation_triggering_input_event(Web::InputEvent const& event)
 static bool is_paste_shortcut(Web::InputEvent const& event)
 {
     auto const* key_event = event.get_pointer<Web::KeyEvent>();
-    if (!key_event || key_event->type != Web::KeyEvent::Type::KeyDown || key_event->key != Web::UIEvents::KeyCode::Key_V
-        || (key_event->modifiers & Web::UIEvents::Mod_PlatformCtrl) == 0)
+    if (!key_event || key_event->type != Web::KeyEvent::Type::KeyDown)
+        return false;
+
+    // A dedicated Paste key pastes without a modifier.
+    if (key_event->key == Web::UIEvents::KeyCode::Key_Paste)
+        return (key_event->modifiers & (Web::UIEvents::Mod_Ctrl | Web::UIEvents::Mod_Alt | Web::UIEvents::Mod_Shift | Web::UIEvents::Mod_Super)) == 0;
+
+    if (key_event->key != Web::UIEvents::KeyCode::Key_V || (key_event->modifiers & Web::UIEvents::Mod_PlatformCtrl) == 0)
         return false;
 
 #if defined(AK_OS_MACOS)
